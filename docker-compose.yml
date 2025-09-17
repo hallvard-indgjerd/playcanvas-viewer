@@ -9,7 +9,9 @@ services:
       target: development
     volumes:
       - ./app/src/:/app/src/
-      - ./app/public/:/app/public/
+      - ./app/lib/:/app/lib/
+      - ./app/plugins/:/app/plugins/
+      - ./app/static/:/app/static/
       - ./app/start.sh:/app/start.sh
     container_name: pc-dev
     restart: unless-stopped

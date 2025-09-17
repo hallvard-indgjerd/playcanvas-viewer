@@ -6,6 +6,8 @@
 FROM node:23.3-alpine3.20 AS base
 WORKDIR /app
 COPY app/package*.json ./
+COPY app/tsconfig.json ./
+COPY app/rollup.config.mjs ./
 COPY app/.env ./
 
 # Development stage
@@ -20,7 +22,9 @@ EXPOSE 3000
 FROM base AS source
 WORKDIR /app
 COPY ./app/src ./src
-COPY ./app/public ./public
+COPY ./app/lib ./lib
+COPY ./app/plugins  ./plugins
+COPY ./app/static ./static
 RUN npm ci --omit=dev && npm run build
 
 # Test stage
