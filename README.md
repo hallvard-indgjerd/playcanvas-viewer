@@ -1,4 +1,4 @@
-# Museum of Cultural Heritage Testing Deployment
+# Museum of Cultural History Testing Deployment
 This fork of the PlayCanvas viewer is a testing and development environment used by the Museum of Cultural History at the University of Oslo. It deploys the viewer in a docker container, configured through the .env and docker-compose files.
 
 
