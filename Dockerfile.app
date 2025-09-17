@@ -25,7 +25,7 @@ COPY ./app/src ./src
 COPY ./app/lib ./lib
 COPY ./app/plugins  ./plugins
 COPY ./app/static ./static
-RUN npm ci --omit=dev && npm run build
+RUN npm ci && npm run build
 
 # Test stage
 # ---------------------------------------
@@ -38,7 +38,7 @@ RUN npm ci --omit=dev && npm run build
 # ---------------------------------------
 FROM nginx:stable-alpine3.20-slim AS production
 
-COPY --from=source /app/build /usr/share/nginx/html
+COPY --from=source /app/dist /usr/share/nginx/html
 
 # Copy in Nginx configuration that redirects to index.html
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
